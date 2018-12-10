@@ -10,74 +10,23 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.edu.hcmute.aloha.adapter.PagerAdapter;
 import vn.edu.hcmute.aloha.data.FriendDB;
 import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.fragment.FragmentCall;
 import vn.edu.hcmute.aloha.fragment.FragmentChat;
 import vn.edu.hcmute.aloha.fragment.FragmentContacts;
 import vn.edu.hcmute.aloha.service.ServiceUtils;
-
-import static java.security.AccessController.getContext;
-
-//public class MainActivity extends AppCompatActivity {
-//
-//    private ViewPager pager;
-//    private TabLayout tabLayout;
-//
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        //upload to appcenter find bug
-//        AppCenter.start(getApplication(), "f7cf01e2-666e-473d-a679-397d1c3d8595", Analytics.class, Crashes.class);
-//
-//        addControls();
-//        addEvents();
-//    }
-//
-//
-//    private void addEvents() {
-//    }
-//
-//
-//    private void addControls() {
-//        pager = this.<ViewPager>findViewById(R.id.view_pager);
-//        tabLayout = this.<TabLayout>findViewById(R.id.tab_layout);
-//
-//        FragmentManager manager = getSupportFragmentManager();
-//        PagerAdapter adapter = new PagerAdapter(manager);
-//
-//        pager.setAdapter(adapter);
-//        tabLayout.setupWithViewPager(pager);
-//
-//        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-//
-//        tabLayout.setTabsFromPagerAdapter(adapter);//deprecated
-//        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
-//
-//    }
-//}
 
 public class MainActivity extends AppCompatActivity {
     private static String TAG = "MainActivity";
