@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.model.Contact;
 
@@ -27,7 +28,7 @@ public class ContactAdapter extends BaseAdapter {
     private ArrayList<Contact> arraylistContact;
     Context _contextContact;
     ViewHolder v;
-    //RoundImage roundedImage;
+
 
 
 
@@ -69,7 +70,7 @@ public class ContactAdapter extends BaseAdapter {
 
         v = new ViewHolder();
 
-        //v.avatar = view.<ImageView>findViewById(R.id.imvAvatar);
+        v.avatar = view.<CircleImageView>findViewById(R.id.imvAvatar);
         v.name = view.<TextView>findViewById(R.id.txtNameItContact);
         v.phone = view.<TextView>findViewById(R.id.txtPhoneItContact);
         v.btnChat= view.<ImageButton>findViewById(R.id.btnChatItContact);
@@ -80,25 +81,6 @@ public class ContactAdapter extends BaseAdapter {
         v.name.setText(data.getName());
         v.phone.setText(data.getPhone());
 
-        // Set image if exists
-//        try {
-//
-//            if (data.getThumb() != null) {
-//                v.avatar.setImageBitmap(data.getThumb());
-//            } else {
-//                v.avatar.setImageResource(R.drawable.avatar);
-//            }
-//            // Seting round image
-//            Bitmap bm = BitmapFactory.decodeResource(view.getResources(), R.drawable.avatar); // Load default image
-//            roundedImage = new RoundImage(bm);
-//            v.avatar.setImageDrawable(roundedImage);
-//        } catch (OutOfMemoryError e) {
-//            // Add default picture
-//            v.avatar.setImageDrawable(this._c.getDrawable(R.drawable.avatar));
-//            e.printStackTrace();
-//        }
-//
-//        Log.e("Image Thumb", "--------------" + data.getThumb());
 
         /*// Set check box listener android
         v.check.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +104,7 @@ public class ContactAdapter extends BaseAdapter {
 
             }
         });
+        v.avatar.setImageResource(R.drawable.default_avata);
         v.btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,7 +140,7 @@ public class ContactAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        //ImageView avatar;
+        CircleImageView avatar;
         TextView name, phone;
         ImageButton btnChat,btnCall;
     }

@@ -168,8 +168,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupTabIcons() {
         int[] tabIcons = {
                 R.drawable.ic_tab_person,
-                R.drawable.ic_tab_group,
-                R.drawable.ic_tab_infor
+                R.drawable.calllog,
+                R.drawable.contact
         };
 
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                     floatButton.setOnClickListener(((FragmentChat) adapter.getItem(position)).onClickFloatButton.getInstance(MainActivity.this));
                     floatButton.setImageResource(R.drawable.plus);
                 } else if (adapter.getItem(position) instanceof FragmentCall) {
-//                    floatButton.setVisibility(View.VISIBLE);
+                    floatButton.setVisibility(View.GONE);
 //                    floatButton.setOnClickListener(((FragmentCall) adapter.getItem(position)).onClickFloatButton.getInstance(MainActivity.this));
 //                    floatButton.setImageResource(R.drawable.ic_float_add_group);
                 } else {
@@ -246,9 +246,9 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.logout) {
             FirebaseAuth.getInstance().signOut();
-//            FriendDB.getInstance(getContext()).dropDB();
-//            //GroupDB.getInstance(getContext()).dropDB();
-//            ServiceUtils.stopServiceFriendChat(getContext().getApplicationContext(), true);
+            FriendDB.getInstance(getBaseContext()).dropDB();
+            //GroupDB.getInstance(getContext()).dropDB();
+            ServiceUtils.stopServiceFriendChat(getApplicationContext(), true);
             finish();
             return true;
         }

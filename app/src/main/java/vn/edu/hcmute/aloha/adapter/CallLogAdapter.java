@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.model.CallDetails;
 
@@ -59,7 +60,7 @@ public class CallLogAdapter extends BaseAdapter {
 
         vCallLog = new ViewHolder();
 
-        vCallLog.avatar = view.<ImageView>findViewById(R.id.imvCallItAvar);
+        vCallLog.avatar = view.<CircleImageView>findViewById(R.id.imvCallItAvar);
         vCallLog.name = view.<TextView>findViewById(R.id.txtNameItCall);
         vCallLog.duraion= view.<TextView>findViewById(R.id.txtDurationItCall);
         vCallLog.dayTime= view.<TextView>findViewById(R.id.txtDayTimeItCall);
@@ -96,25 +97,7 @@ public class CallLogAdapter extends BaseAdapter {
         //set date
         vCallLog.dayTime.setText(data.getDayTime());
 
-        // Set image if exists
-//        try {
-//
-//            if (data.getThumb() != null) {
-//                v.avatar.setImageBitmap(data.getThumb());
-//            } else {
-//                v.avatar.setImageResource(R.drawable.avatar);
-//            }
-//            // Seting round image
-//            Bitmap bm = BitmapFactory.decodeResource(view.getResources(), R.drawable.avatar); // Load default image
-//            roundedImage = new RoundImage(bm);
-//            v.avatar.setImageDrawable(roundedImage);
-//        } catch (OutOfMemoryError e) {
-//            // Add default picture
-//            v.avatar.setImageDrawable(this._c.getDrawable(R.drawable.avatar));
-//            e.printStackTrace();
-//        }
-//
-//        Log.e("Image Thumb", "--------------" + data.getThumb());
+        vCallLog.avatar.setImageResource(R.drawable.default_avata);
 
         view.setTag(data);
         return view;
@@ -122,7 +105,7 @@ public class CallLogAdapter extends BaseAdapter {
 
     static class ViewHolder {
         TextView name,duraion,dayTime;
-        ImageView avatar;
+        CircleImageView avatar;
         ImageButton btnChat;
     }
 }

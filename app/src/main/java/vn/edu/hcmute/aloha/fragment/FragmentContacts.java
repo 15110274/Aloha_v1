@@ -72,11 +72,6 @@ public class FragmentContacts extends Fragment {
     }
 
     class LoadContact extends AsyncTask<Void,Void,Void>{
-
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//
-//        }
         @Override
         protected Void doInBackground(Void... voids) {
             if (phones != null) {
@@ -90,17 +85,6 @@ public class FragmentContacts extends Fragment {
                     String id = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
                     String name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                     String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                    //String EmailAddr = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA2));
-//                    String image_thumb = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_THUMBNAIL_URI));
-//                    try {
-//                        if (image_thumb != null) {
-//                            bit_thumb = MediaStore.Images.Media.getBitmap(resolver, Uri.parse(image_thumb));
-//                        } else {
-//                            Log.e("No Image Thumb", "--------------");
-//                        }
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
 
                     Contact contact = new Contact();
                     //contact.setThumb(bit_thumb);
