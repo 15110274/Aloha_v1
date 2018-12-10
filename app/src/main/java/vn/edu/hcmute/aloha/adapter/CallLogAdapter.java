@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class CallLogAdapter extends BaseAdapter {
     public CallLogAdapter(List<CallDetails> callDetails, Context context) {
         _callDetails = callDetails;
         _context = context;
-        this.arraylistCallDetails = new ArrayList<CallDetails>();
+        this.arraylistCallDetails = new ArrayList<>();
         this.arraylistCallDetails.addAll(_callDetails);
 
     }
@@ -56,42 +57,43 @@ public class CallLogAdapter extends BaseAdapter {
             Log.e("Inside", "here--------------------------- In view2");
         }
 
-        vCallLog = new CallLogAdapter.ViewHolder();
+        vCallLog = new ViewHolder();
 
-        //v.avatar = view.<ImageView>findViewById(R.id.imvAvatar);
+        vCallLog.avatar = view.<ImageView>findViewById(R.id.imvCallItAvar);
         vCallLog.name = view.<TextView>findViewById(R.id.txtNameItCall);
-        //vCallLog.type = view.<TextView>findViewById(R.id.txtTypeItCall);
         vCallLog.duraion= view.<TextView>findViewById(R.id.txtDurationItCall);
         vCallLog.dayTime= view.<TextView>findViewById(R.id.txtDayTimeItCall);
-//        vCallLog.btnChat= view.<ImageButton>findViewById(R.id.btnChatItContact);
+        vCallLog.btnChat= view.<ImageButton>findViewById(R.id.btnChatItCall);
 
-        final CallDetails data = (CallDetails) _callDetails.get(i);
+        CallDetails data = _callDetails.get(i);
 
         //người gọi không có trong danh bạ
         if(data.getName()!=null)
             vCallLog.name.setText(data.getName());
         else vCallLog.name.setText(data.getPhone());
+        //set time
         vCallLog.duraion.setText(data.getDuration()+"s");
+        //set type
         switch (data.getType())
         {
             case 1:{
                 vCallLog.name.setText(vCallLog.name.getText().toString()+ "  ↙");
+                vCallLog.name.setTextColor(Color.parseColor("#000000"));
                 break;
             }
             case 2:{
                 vCallLog.name.setText(vCallLog.name.getText().toString()+ "  ↗");
+                vCallLog.name.setTextColor(Color.parseColor("#000000"));
                 break;
             }
             case 3:{
                 vCallLog.name.setTextColor(Color.parseColor("#f44336"));
+                vCallLog.duraion.setText("0s");
                 break;
             }
-            default:{
-
-            }
-
         }
 
+        //set date
         vCallLog.dayTime.setText(data.getDayTime());
 
         // Set image if exists
@@ -118,8 +120,9 @@ public class CallLogAdapter extends BaseAdapter {
         return view;
     }
 
-    public class ViewHolder {
+    static class ViewHolder {
         TextView name,duraion,dayTime;
-        //ImageButton btnChat;
+        ImageView avatar;
+        ImageButton btnChat;
     }
 }

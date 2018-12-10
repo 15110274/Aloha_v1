@@ -19,7 +19,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.edu.hcmute.aloha.ChatActivity;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.model.Contact;
 
@@ -136,8 +135,8 @@ public class ContactAdapter extends BaseAdapter {
     }
 
     private void xuLyChat() {
-        Intent intent=new Intent(this._contextContact,ChatActivity.class);
-        this._contextContact.startActivity(intent);
+//        Intent intent=new Intent(this._contextContact,ChatActivity.class);
+//        this._contextContact.startActivity(intent);
     }
 
     private void xuLyCall(String phone) {

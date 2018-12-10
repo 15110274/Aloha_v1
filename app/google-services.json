@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "716567339366",
+    "firebase_url": "https://aloha-f2b7c.firebaseio.com",
+    "project_id": "aloha-f2b7c",
+    "storage_bucket": "aloha-f2b7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716567339366:android:63dc6a7b93441a9e",
+        "android_client_info": {
+          "package_name": "vn.edu.hcmute.aloha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716567339366-agfj6m843hdk90sm619jf730onhme2fe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.edu.hcmute.aloha",
+            "certificate_hash": "7ffa851c9475f5216227e0a8b303032603fd37c8"
+          }
+        },
+        {
+          "client_id": "716567339366-9if8e129a3kgmbrb044h0pcr4497bgee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9eSGF90BRruZ4tmKae9JE1TSTFUKoCGU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716567339366-9if8e129a3kgmbrb044h0pcr4497bgee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

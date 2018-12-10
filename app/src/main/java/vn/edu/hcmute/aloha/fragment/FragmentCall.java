@@ -1,22 +1,25 @@
 package vn.edu.hcmute.aloha.fragment;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import vn.edu.hcmute.aloha.R;
@@ -49,12 +52,14 @@ public class FragmentCall extends Fragment {
         callDetails = new ArrayList<CallDetails>();
         resolver = this.getActivity().getContentResolver();
         lvCallDetail = view.<ListView>findViewById(R.id.lvCall);
-
-        cursor = getActivity().getContentResolver().query(CallLog.Calls.CONTENT_URI, null, null, null, null);
+        cursor = getActivity().getContentResolver().query(CallLog.Calls.CONTENT_URI, null,
+                null, null,CallLog.Calls.DATE+ " DESC");
         FragmentCall.LoadCallLog loadCallLog = new FragmentCall.LoadCallLog();
         loadCallLog.execute();
 
+
         return view;
+
     }
 
     public class LoadCallLog extends AsyncTask<Void,Void,Void>{
@@ -68,15 +73,23 @@ public class FragmentCall extends Fragment {
                     //Toast.makeText(getActivity(), "No call log list.", Toast.LENGTH_LONG).show();
                 }
                 //cursor.moveToLast();
-//
-                while (cursor.moveToNext()) {
-                    //Bitmap bit_thumb = null;
-                    //String id = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
-                    String name = cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME));
-                    String phone = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
-                    String duration = cursor.getString(cursor.getColumnIndex(CallLog.Calls.DURATION));
-                    String dayTime = cursor.getString(cursor.getColumnIndex(CallLog.Calls.DATE));
-                    int type = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.TYPE));
+
+                while (cursor.moveToNext()){
+                    try{
+                        //Bitmap bit_thumb = null;
+                        //String id = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
+                        String name = cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME));
+                        String phone = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
+                        String duration = cursor.getString(cursor.getColumnIndex(CallLog.Calls.DURATION));
+                        int type = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.TYPE));
+
+                        // Convert to DateFormat
+                        int secondindex = cursor.getColumnIndex(CallLog.Calls.DATE);
+                        long seconds=cursor.getLong(secondindex);
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                        String dateString = formatter.format(new Date(seconds));
+
+
 //                    String image_thumb = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_THUMBNAIL_URI));
 //                    try {
 //                        if (image_thumb != null) {
@@ -88,15 +101,19 @@ public class FragmentCall extends Fragment {
 //                        e.printStackTrace();
 //                    }
 
-                    CallDetails callDetail = new CallDetails();
+                        CallDetails callDetail = new CallDetails();
 //                    //contact.setThumb(bit_thumb);
-                    callDetail.setName(name);
-                    callDetail.setPhone(phone);
-                    callDetail.setType(type);
-                    callDetail.setDuration(duration);
-                    callDetail.setDayTime(dayTime);
-//
-                    callDetails.add(callDetail);
+                        callDetail.setName(name);
+                        callDetail.setPhone(phone);
+                        callDetail.setType(type);
+                        callDetail.setDuration(duration);
+                        callDetail.setDayTime(dateString);
+
+                        callDetails.add(callDetail);
+                    }
+                    catch (Exception e){
+
+                    }
                 }
             } else {
                 Log.e("Cursor close 1", "----------------");

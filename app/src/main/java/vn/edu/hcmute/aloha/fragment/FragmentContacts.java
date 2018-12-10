@@ -60,7 +60,9 @@ public class FragmentContacts extends Fragment {
         resolver = this.getActivity().getContentResolver();
         lvContact = rootView.<ListView>findViewById(R.id.lvContact);
 
-        phones = getActivity().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
+        phones = getActivity().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                null, null, null,
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " DESC");
         LoadContact loadContact = new LoadContact();
         loadContact.execute();
 
@@ -119,16 +121,6 @@ public class FragmentContacts extends Fragment {
             adapter = new ContactAdapter(contacts, getActivity());
             lvContact.setAdapter(adapter);
 
-            // Select item on listclick
-            lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                    Log.e("search", "here---------------- listener");
-
-                    Contact data = contacts.get(i);
-                }
-            });
         }
     }
 }
