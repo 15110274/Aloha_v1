@@ -27,7 +27,8 @@ import vn.edu.hcmute.aloha.fragment.FragmentCall;
 import vn.edu.hcmute.aloha.fragment.FragmentChat;
 import vn.edu.hcmute.aloha.fragment.FragmentContacts;
 import vn.edu.hcmute.aloha.service.ServiceUtils;
-
+//Lớp xử lý chính, chứa các fragment
+//
 public class MainActivity extends AppCompatActivity {
     private static String TAG = "MainActivity";
     private ViewPager viewPager;
@@ -43,16 +44,12 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser user;
 
+    //Khởi tại Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        if(toolbar != null) {
-//            setSupportActionBar(toolbar);
-//            getSupportActionBar().setTitle("RivChat");
-//        }
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         floatButton = (FloatingActionButton) findViewById(R.id.fab);
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initFirebase() {
-        //Khoi tao thanh phan de dang nhap, dang ky
+        //Khởi tại các thành phần để đăng nhập/ đăng ký
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -114,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // Cài icon cho các tab fragment
     private void setupTabIcons() {
         int[] tabIcons = {
                 R.drawable.ic_tab_person,
@@ -126,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
     }
 
+    // Cài đặt và hiển thị các fragment
     private void setupViewPager(ViewPager viewPager) {
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new FragmentChat(), STR_FRIEND_FRAGMENT);
@@ -140,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+            // Hiển thị floatbutton cho mỗi fragment
             @Override
             public void onPageSelected(int position) {
                 ServiceUtils.stopServiceFriendChat(MainActivity.this.getApplicationContext(), false);
@@ -149,8 +149,6 @@ public class MainActivity extends AppCompatActivity {
                     floatButton.setImageResource(R.drawable.plus);
                 } else if (adapter.getItem(position) instanceof FragmentCall) {
                     floatButton.setVisibility(View.GONE);
-//                    floatButton.setOnClickListener(((FragmentCall) adapter.getItem(position)).onClickFloatButton.getInstance(MainActivity.this));
-//                    floatButton.setImageResource(R.drawable.ic_float_add_group);
                 } else {
                     floatButton.setVisibility(View.GONE);
                 }
@@ -163,21 +161,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == REQUEST_CODE_LOGIN && resultCode == RESULT_OK) {
-//            if (data.getStringExtra(STR_EXTRA_ACTION).equals(LoginActivity.STR_EXTRA_ACTION_LOGIN)) {
-//                authUtils.signIn(data.getStringExtra(STR_EXTRA_USERNAME), data.getStringExtra(STR_EXTRA_PASSWORD));
-//            } else if (data.getStringExtra(STR_EXTRA_ACTION).equals(RegisterActivity.STR_EXTRA_ACTION_REGISTER)) {
-//                authUtils.createUser(data.getStringExtra(STR_EXTRA_USERNAME), data.getStringExtra(STR_EXTRA_PASSWORD));
-//            }else if(data.getStringExtra(STR_EXTRA_ACTION).equals(LoginActivity.STR_EXTRA_ACTION_RESET)){
-//                authUtils.resetPassword(data.getStringExtra(STR_EXTRA_USERNAME));
-//            }
-//        } else if (resultCode == RESULT_CANCELED) {
-//            this.finish();
-//        }
-//    }
+    // menu dùng để đăng xuất
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -185,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //Xử lý đăng xuất khi bấm vào đăng xuất
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

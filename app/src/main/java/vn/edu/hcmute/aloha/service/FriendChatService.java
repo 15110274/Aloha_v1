@@ -57,7 +57,6 @@ public class FriendChatService extends Service {
         mapQuery = new HashMap<>();
         mapChildEventListenerMap = new HashMap<>();
         listFriend = FriendDB.getInstance(this).getListFriend();
-//        listGroup = GroupDB.getInstance(this).getListGroups();
         listKey = new ArrayList<>();
         mapBitmap = new HashMap<>();
         updateOnline = new CountDownTimer(System.currentTimeMillis(), StaticConfig.TIME_TO_REFRESH) {
@@ -122,47 +121,6 @@ public class FriendChatService extends Service {
                 }
                 mapQuery.get(friend.idRoom).addChildEventListener(mapChildEventListenerMap.get(friend.idRoom));
             }
-
-//            for (final Group group : listGroup) {
-//                if (!listKey.contains(group.id)) {
-//                    mapQuery.put(group.id, FirebaseDatabase.getInstance().getReference().child("message/" + group.id).limitToLast(1));
-//                    mapChildEventListenerMap.put(group.id, new ChildEventListener() {
-//                        @Override
-//                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                            if (mapMark.get(group.id) != null && mapMark.get(group.id)) {
-//                                if (mapBitmap.get(group.id) == null) {
-//                                    mapBitmap.put(group.id, BitmapFactory.decodeResource(getResources(), R.drawable.ic_notify_group));
-//                                }
-//                                createNotify(group.groupInfo.get("name"), (String) ((HashMap) dataSnapshot.getValue()).get("text"), group.id.hashCode(), mapBitmap.get(group.id) , true);
-//                            } else {
-//                                mapMark.put(group.id, true);
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(DatabaseError databaseError) {
-//
-//                        }
-//                    });
-//                    listKey.add(group.id);
-//                }
-//                mapQuery.get(group.id).addChildEventListener(mapChildEventListenerMap.get(group.id));
-//            }
 
         } else {
             stopSelf();

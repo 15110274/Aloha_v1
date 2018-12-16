@@ -20,7 +20,7 @@ import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.Friend;
 import vn.edu.hcmute.aloha.model.ListFriend;
 
-
+// Các dịch vu cơ bản cho hoạt động chat
 public class ServiceUtils {
 
     private static ServiceConnection connectionServiceFriendChatForStart = null;
@@ -37,6 +37,7 @@ public class ServiceUtils {
         return false;
     }
 
+    //Ngừng chat
     public static void stopServiceFriendChat(Context context, final boolean kill) {
         if (isServiceFriendChatRunning(context)) {
             Intent intent = new Intent(context, FriendChatService.class);
@@ -82,6 +83,7 @@ public class ServiceUtils {
         }
     }
 
+    //bắt đầu dịch vụ chat
     public static void startServiceFriendChat(Context context) {
         if (!isServiceFriendChatRunning(context)) {
             Intent myIntent = new Intent(context, FriendChatService.class);
@@ -109,6 +111,7 @@ public class ServiceUtils {
         }
     }
 
+    //Trạng thái on/off của người dùng
     public static void updateUserStatus(Context context){
         if(isNetworkConnected(context)) {
             String uid = SharedPreferenceHelper.getInstance(context).getUID();
@@ -119,6 +122,7 @@ public class ServiceUtils {
         }
     }
 
+    //Cập nhật trang thái on/off của bạn bè
     public static void updateFriendStatus(Context context, ListFriend listFriend){
         if(isNetworkConnected(context)) {
             for (Friend friend : listFriend.getListFriend()) {
@@ -143,6 +147,7 @@ public class ServiceUtils {
         }
     }
 
+    //Kiểm tra có kết nối Internet
     public static boolean isNetworkConnected(Context context) {
         try{
             ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

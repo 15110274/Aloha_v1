@@ -33,8 +33,9 @@ import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.Consersation;
 import vn.edu.hcmute.aloha.model.Message;
 
-
+// Giao diện chat
 public class ChatActivity extends AppCompatActivity implements View.OnClickListener {
+    // Các biến cần thiết
     private RecyclerView recyclerChat;
     public static final int VIEW_TYPE_USER_MESSAGE = 0;
     public static final int VIEW_TYPE_FRIEND_MESSAGE = 1;
@@ -49,11 +50,13 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     public Bitmap bitmapAvataUser;
 
 
+    //Khởi tạo lớp
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         Intent intentData = getIntent();
+        //Lấy thông tin bạn chat
         idFriend = intentData.getCharSequenceArrayListExtra(StaticConfig.INTENT_KEY_CHAT_ID);
         roomId = intentData.getStringExtra(StaticConfig.INTENT_KEY_CHAT_ROOM_ID);
         String nameFriend = intentData.getStringExtra(StaticConfig.INTENT_KEY_CHAT_FRIEND);
@@ -62,6 +65,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         btnSend = (ImageButton) findViewById(R.id.btnSend);
         btnSend.setOnClickListener(this);
 
+        // Lấy Avatar
         String base64AvataUser = SharedPreferenceHelper.getInstance(this).getUserInfo().avata;
         if (!base64AvataUser.equals(StaticConfig.STR_DEFAULT_BASE64)) {
             byte[] decodedString = Base64.decode(base64AvataUser, Base64.DEFAULT);
@@ -232,7 +236,7 @@ class ListMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return consersation.getListMessageData().size();
     }
 }
-
+//ViewHolder các tin nhắn của người gửi
 class ItemMessageUserHolder extends RecyclerView.ViewHolder {
     public TextView txtContent;
     public CircleImageView avata;
@@ -243,7 +247,7 @@ class ItemMessageUserHolder extends RecyclerView.ViewHolder {
         avata = (CircleImageView) itemView.findViewById(R.id.imageView2);
     }
 }
-
+//Viewholder cho các tin nhắn của người nhận
 class ItemMessageFriendHolder extends RecyclerView.ViewHolder {
     public TextView txtContent;
     public CircleImageView avata;

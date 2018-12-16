@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 import vn.edu.hcmute.aloha.data.StaticConfig;
 
-
+// lớp để đăng ký tài khoản mới cho người chưa có tài khoản
 public class RegisterActivity extends AppCompatActivity {
     FloatingActionButton fab;
     CardView cvAdd;
@@ -35,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText editTextUsername, editTextPassword, editTextRepeatPassword;
     public static String STR_EXTRA_ACTION_REGISTER = "register";
 
+    //khởi tạo và khai báo các đối tượng
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    // xử lý khi người dùng bấm vào nút REGISTER
+    // trả dữ liệu nhập vào hợp lệ lại cho loginActivity để thực hiện đăng ký
     private void clickRegister() {
         String username = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();
@@ -78,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    //Tạo hiệu ứng cho layout
     private void ShowEnterAnimation() {
         Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.fabtransition);
         getWindow().setSharedElementEnterTransition(transition);
@@ -113,6 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+
     public void animateRevealShow() {
         Animator mAnimator = ViewAnimationUtils.createCircularReveal(cvAdd, cvAdd.getWidth()/2,0, fab.getWidth() / 2, cvAdd.getHeight());
         mAnimator.setDuration(500);
@@ -132,6 +137,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAnimator.start();
     }
 
+    //Hiệu ứng
     public void animateRevealClose() {
         Animator mAnimator = ViewAnimationUtils.createCircularReveal(cvAdd,cvAdd.getWidth()/2,0, cvAdd.getHeight(), fab.getWidth() / 2);
         mAnimator.setDuration(500);
@@ -158,13 +164,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-
-    /**
-     * Validate email, pass == re_pass
-     * @param emailStr
-     * @param password
-     * @return
-     */
+    //Kiểm tra troohoogn tin nhập vào hợp lệ
     private boolean validate(String emailStr, String password, String repeatPassword) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
         return password.length() > 0 && repeatPassword.equals(password) && matcher.find();

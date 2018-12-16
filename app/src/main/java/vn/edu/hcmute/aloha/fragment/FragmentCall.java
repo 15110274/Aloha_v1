@@ -25,16 +25,17 @@ import java.util.List;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.adapter.CallLogAdapter;
 import vn.edu.hcmute.aloha.model.CallDetails;
+// Fragment hiển thị lịch sử cuộc gọi
 
 public class FragmentCall extends Fragment {
 
-    // ArrayList
+    // ArrayList lưu danh sách chi tiết cuộc gọi
     private ArrayList<CallDetails> callDetails;
-    private List<CallDetails> temp;
-    // Contact List
+    //private List<CallDetails> temp;
+    // CallDetail ListView hiển thị danh sách lịch sử cuộc gọi
     private ListView lvCallDetail;
-    // Cursor to load contacts list
-    private Cursor cursor;//, email;
+    // Cursor to load calllog list
+    private Cursor cursor;
 
     // Pop up
     private ContentResolver resolver;
@@ -45,6 +46,7 @@ public class FragmentCall extends Fragment {
         return new FragmentCall();
     }
 
+    //Khởi tại Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class FragmentCall extends Fragment {
 
     }
 
+    //Load dữ liệu thông tin cuộc gọi tử điện thoại đổ lên list callDetails
     public class LoadCallLog extends AsyncTask<Void,Void,Void>{
 
         @Override
@@ -72,12 +75,10 @@ public class FragmentCall extends Fragment {
                 if (cursor.getCount() == 0) {
                     //Toast.makeText(getActivity(), "No call log list.", Toast.LENGTH_LONG).show();
                 }
-                //cursor.moveToLast();
 
+                // đưa dữ liệu đã lấy được từ máy vào List CallDetail
                 while (cursor.moveToNext()){
                     try{
-                        //Bitmap bit_thumb = null;
-                        //String id = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
                         String name = cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME));
                         String phone = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
                         String duration = cursor.getString(cursor.getColumnIndex(CallLog.Calls.DURATION));
@@ -90,19 +91,9 @@ public class FragmentCall extends Fragment {
                         String dateString = formatter.format(new Date(seconds));
 
 
-//                    String image_thumb = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_THUMBNAIL_URI));
-//                    try {
-//                        if (image_thumb != null) {
-//                            bit_thumb = MediaStore.Images.Media.getBitmap(resolver, Uri.parse(image_thumb));
-//                        } else {
-//                            Log.e("No Image Thumb", "--------------");
-//                        }
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
+
 
                         CallDetails callDetail = new CallDetails();
-//                    //contact.setThumb(bit_thumb);
                         callDetail.setName(name);
                         callDetail.setPhone(phone);
                         callDetail.setType(type);
@@ -121,6 +112,7 @@ public class FragmentCall extends Fragment {
             cursor.close();
             return null;
         }
+        // set adapter cho LvCalldetail
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             adapter = new CallLogAdapter(callDetails, getActivity());

@@ -34,7 +34,7 @@ import vn.edu.hcmute.aloha.data.SharedPreferenceHelper;
 import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.User;
 
-
+// lớp thực hiện đăng nhập vào ứng dụng
 public class LoginActivity extends AppCompatActivity {
     private static String TAG = "LoginActivity";
     FloatingActionButton fab;
@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+    // Khai báo các đối tượng
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
      * Khởi tạo các thành phần cần thiết cho việc quản lý đăng nhập
      */
     private void initFirebase() {
-        //Khoi tao thanh phan de dang nhap, dang ky
+        //Khởi tạo các thành phần để đăng nhập/ đăng ký
         mAuth = FirebaseAuth.getInstance();
         authUtils = new AuthUtils();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -93,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        //Khoi tao dialog waiting khi dang nhap
+        //Khởi tạo Dialog khi đăng nhập
         waitingDialog = new LovelyProgressDialog(this).setCancelable(false);
     }
 
@@ -105,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    // xử lý khi nhấn chọn Register
     public void clickRegisterLayout(View view) {
         getWindow().setExitTransition(null);
         getWindow().setEnterTransition(null);
@@ -118,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //Nhập lại dữ liệu từ RegisterActivity để đăng ký tài khoản mới
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -126,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //Xử lý khi bấm Login
     public void clickLogin(View view) {
         String username = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();
@@ -143,11 +147,13 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
+    // Xác minh thông tin nhập vào hợp lệ
     private boolean validate(String emailStr, String password) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return (password.length() > 0 || password.equals(";")) && matcher.find();
     }
 
+    // Xử lý khi chọn ResetPassword
     public void clickResetPassword(View view) {
         String username = editTextUsername.getText().toString();
         if (validate(username, ";")) {
@@ -225,6 +231,7 @@ public class LoginActivity extends AppCompatActivity {
          * @param email
          * @param password
          */
+        // Thực hiện Đăng nhập firebase bằng email
         void signIn(String email, String password) {
             waitingDialog.setIcon(R.drawable.ic_person_low)
                     .setTitle("Login....")
@@ -261,6 +268,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .setConfirmButtonText("Ok")
                                         .show();
                             } else {
+                                // Lưu lại thông tin để không cần đăng nhập lại mỗi khi chạy ứng dụng
                                 saveUserInfo();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 LoginActivity.this.finish();
@@ -280,6 +288,7 @@ public class LoginActivity extends AppCompatActivity {
          *
          * @param email
          */
+        // Thực hiện ResetPassword thông qua Firebase
         void resetPassword(final String email) {
             mAuth.sendPasswordResetEmail(email)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

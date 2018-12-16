@@ -1,7 +1,7 @@
 package vn.edu.hcmute.aloha.model;
 
 
-
+// đối trượng người Dùng
 public class User {
     public String name;
     public String email;

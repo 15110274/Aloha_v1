@@ -22,7 +22,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.model.Contact;
-
+//adapter để đổ dữ liệu danh bạ lên listView ở FragmentContacts
 public class ContactAdapter extends BaseAdapter {
     public List<Contact> _contact;
     private ArrayList<Contact> arraylistContact;
@@ -68,6 +68,7 @@ public class ContactAdapter extends BaseAdapter {
             Log.e("Inside", "here--------------------------- In view2");
         }
 
+        //khai báo ViewHolder
         v = new ViewHolder();
 
         v.avatar = view.<CircleImageView>findViewById(R.id.imvAvatar);
@@ -95,6 +96,7 @@ public class ContactAdapter extends BaseAdapter {
             }
         });*/
 
+        //sự kiện bấm nút gọi
         v.btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +124,7 @@ public class ContactAdapter extends BaseAdapter {
 //        this._contextContact.startActivity(intent);
     }
 
+    //hàm xử lý gọi
     private void xuLyCall(String phone) {
         Intent intent = new Intent(Intent.ACTION_CALL);
         Uri uri = Uri.parse("tel:" + phone);
@@ -139,6 +142,7 @@ public class ContactAdapter extends BaseAdapter {
         this._contextContact.startActivity(intent);
     }
 
+    //ViewHolder cho custom layout danh bạ
     static class ViewHolder {
         CircleImageView avatar;
         TextView name, phone;

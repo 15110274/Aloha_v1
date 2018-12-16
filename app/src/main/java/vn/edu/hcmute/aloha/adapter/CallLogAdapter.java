@@ -17,7 +17,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.model.CallDetails;
-
+//adapter để đổ dữ liệu thông tin lịch sử cuộc gọi lên listView ở FragmentCall
 public class CallLogAdapter extends BaseAdapter {
     public List<CallDetails> _callDetails;
     private ArrayList<CallDetails> arraylistCallDetails;
@@ -103,6 +103,7 @@ public class CallLogAdapter extends BaseAdapter {
         return view;
     }
 
+    // Viewholder cho custem layout thông tin lịch sử cuộc gọi
     static class ViewHolder {
         TextView name,duraion,dayTime;
         CircleImageView avatar;
