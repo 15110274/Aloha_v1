@@ -1,6 +1,6 @@
 package vn.edu.hcmute.aloha.model;
 
-
+// đối tượng Tin Nhắn
 
 public class Message{
     public String idSender;
