@@ -28,7 +28,13 @@ import vn.edu.hcmute.aloha.fragment.FragmentChat;
 import vn.edu.hcmute.aloha.fragment.FragmentContacts;
 import vn.edu.hcmute.aloha.service.ServiceUtils;
 //Lớp xử lý chính, chứa các fragment
-//
+//Nguyễn Thị Yến Nhi
+//Nguyễn Dương Văn Khoa
+//Nguyễn Trần Tấn Phát
+//12/11-18/11(tuần 13)
+//19/11-25-11(tuần 14)
+//26/11-2-12(tuần 15)
+//3/12-9/12(tuần 16)
 public class MainActivity extends AppCompatActivity {
     private static String TAG = "MainActivity";
     private ViewPager viewPager;

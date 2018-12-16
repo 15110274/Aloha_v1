@@ -24,7 +24,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import vn.edu.hcmute.aloha.data.StaticConfig;
-
+//Nguyễn Thị Yến Nhi
+//Nguyễn Trần Tấn Phát
+//26/11-2-12(tuần 15)
 // lớp để đăng ký tài khoản mới cho người chưa có tài khoản
 public class RegisterActivity extends AppCompatActivity {
     FloatingActionButton fab;

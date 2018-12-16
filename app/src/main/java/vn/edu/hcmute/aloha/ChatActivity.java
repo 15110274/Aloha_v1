@@ -32,6 +32,10 @@ import vn.edu.hcmute.aloha.data.SharedPreferenceHelper;
 import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.Consersation;
 import vn.edu.hcmute.aloha.model.Message;
+//Nguyễn Thị Yến Nhi
+//Nguyễn Dương Văn Khoa
+//Nguyễn Trần Tấn Phát
+//3/12-9/12(tuần 16)
 
 // Giao diện chat
 public class ChatActivity extends AppCompatActivity implements View.OnClickListener {
@@ -52,6 +56,9 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
     //Khởi tạo lớp
     @Override
+    //Nguyễn Dương Văn Khoa
+    //Nguyễn Trần Tấn Phát
+    //3/12-9/12(tuần 16)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
@@ -156,7 +163,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 }
-
+//Nguyễn Trần Tấn Phát
+//3/12-9/12(tuần 16)
 class ListMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
@@ -237,6 +245,8 @@ class ListMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 }
 //ViewHolder các tin nhắn của người gửi
+//Nguyễn Dương Văn Khoa
+//3/12-9/12(tuần 16)
 class ItemMessageUserHolder extends RecyclerView.ViewHolder {
     public TextView txtContent;
     public CircleImageView avata;
@@ -248,6 +258,8 @@ class ItemMessageUserHolder extends RecyclerView.ViewHolder {
     }
 }
 //Viewholder cho các tin nhắn của người nhận
+//Nguyễn Thị Yến Nhi
+//3/12-9/12(tuần 16)
 class ItemMessageFriendHolder extends RecyclerView.ViewHolder {
     public TextView txtContent;
     public CircleImageView avata;

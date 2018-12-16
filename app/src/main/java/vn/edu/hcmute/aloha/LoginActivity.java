@@ -33,7 +33,10 @@ import java.util.regex.Pattern;
 import vn.edu.hcmute.aloha.data.SharedPreferenceHelper;
 import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.User;
-
+//Nguyễn Dương Văn Khoa
+//Nguyễn Trần Tấn Phát
+//26/11-2-12(tuần 15)
+//3/12-9/12(tuần 16)
 // lớp thực hiện đăng nhập vào ứng dụng
 public class LoginActivity extends AppCompatActivity {
     private static String TAG = "LoginActivity";

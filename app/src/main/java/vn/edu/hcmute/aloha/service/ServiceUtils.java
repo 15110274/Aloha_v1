@@ -38,6 +38,8 @@ public class ServiceUtils {
     }
 
     //Ngừng chat
+    //Nguyễn Dương Văn Khoa
+    //26/11-2-12(tuần 15)
     public static void stopServiceFriendChat(Context context, final boolean kill) {
         if (isServiceFriendChatRunning(context)) {
             Intent intent = new Intent(context, FriendChatService.class);
@@ -59,7 +61,8 @@ public class ServiceUtils {
             context.bindService(intent, connectionServiceFriendChatForDestroy, Context.BIND_NOT_FOREGROUND);
         }
     }
-
+    //Nguyễn Trần Tấn Phát
+    //26/11-2-12(tuần 15)
     public static void stopRoom(Context context, final String idRoom) {
         if (isServiceFriendChatRunning(context)) {
             Intent intent = new Intent(context, FriendChatService.class);
@@ -84,6 +87,9 @@ public class ServiceUtils {
     }
 
     //bắt đầu dịch vụ chat
+    //Nguyễn Dương Văn Khoa
+    //Nguyễn Trần Tấn Phát
+    //26/11-2-12(tuần 15)
     public static void startServiceFriendChat(Context context) {
         if (!isServiceFriendChatRunning(context)) {
             Intent myIntent = new Intent(context, FriendChatService.class);
@@ -110,7 +116,8 @@ public class ServiceUtils {
             context.bindService(intent, connectionServiceFriendChatForStart, Context.BIND_NOT_FOREGROUND);
         }
     }
-
+    //Nguyễn Thị Yến Nhi
+    //26/11-2-12(tuần 15)
     //Trạng thái on/off của người dùng
     public static void updateUserStatus(Context context){
         if(isNetworkConnected(context)) {
@@ -123,6 +130,8 @@ public class ServiceUtils {
     }
 
     //Cập nhật trang thái on/off của bạn bè
+    //Nguyễn Thị Yến Nhi
+    //26/11-2-12(tuần 15)
     public static void updateFriendStatus(Context context, ListFriend listFriend){
         if(isNetworkConnected(context)) {
             for (Friend friend : listFriend.getListFriend()) {
@@ -148,6 +157,8 @@ public class ServiceUtils {
     }
 
     //Kiểm tra có kết nối Internet
+    //Nguyễn Trần Tấn Phát
+    //26/11-2-12(tuần 15)
     public static boolean isNetworkConnected(Context context) {
         try{
             ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

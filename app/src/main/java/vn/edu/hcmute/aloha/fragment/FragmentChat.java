@@ -55,7 +55,13 @@ import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.Friend;
 import vn.edu.hcmute.aloha.model.ListFriend;
 import vn.edu.hcmute.aloha.service.ServiceUtils;
+//Nguyễn Thị Yến Nhi
+//Nguyễn Dương Văn Khoa
+//Nguyễn Trần Tấn Phát
+//26/11-2-12(tuần 15)
+//3/12-9/12(tuần 16)
 // Fragment hiển thị thông tin chat
+
 public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     //Khai báo các biến cần thiết
@@ -84,6 +90,8 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
 
     //Tải lại sau thời gian mặt đặt để làm mới Fragment, update các thông tin
     @Override
+    //Nguyễn Trần Tấn Phát
+    //3/12-9/12(tuần 16)
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         detectFriendOnline = new CountDownTimer(System.currentTimeMillis(), StaticConfig.TIME_TO_REFRESH) {
@@ -193,6 +201,8 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
         }
 
         @Override
+        //Nguyễn Dương Văn Khoa
+        //3/12-9/12(tuần 16)
         public void onClick(final View view) {
             new LovelyTextInputDialog(view.getContext(), R.style.EditTextTintTheme)
                     .setTopColorRes(R.color.colorPrimary)
@@ -226,6 +236,8 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
          *
          * @param email
          */
+        //Nguyễn Trần Tấn Phát
+        //3/12-9/12(tuần 16)
         private void findIDEmail(String email) {
             dialogWait.setCancelable(false)
                     .setIcon(R.drawable.ic_add_friend)
@@ -276,6 +288,8 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
         /**
          * Lấy danh sách bạn bè qua UID
          */
+        //Nguyễn Thị Yến Nhi
+        //3/12-9/12(tuần 16)
         private void checkBeforAddFriend(final String idFriend, Friend userInfo) {
             dialogWait.setCancelable(false)
                     .setIcon(R.drawable.ic_add_friend)
@@ -307,6 +321,8 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
          * @param idFriend
          */
         //Thêm bạn mới qua email
+        //3/12-9/12(tuần 16)
+        //Nguyễn Dương Văn Khoa
         private void addFriend(final String idFriend, boolean isIdFriend) {
             if (idFriend != null) {
                 if (isIdFriend) {
@@ -370,6 +386,8 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
     /**
      * Lay danh sach ban be tren server
      */
+    //Nguyễn Trần Tấn Phát\
+    //3/12-9/12(tuần 16)
     private void getListFriendUId() {
         FirebaseDatabase.getInstance().getReference().child("friend/" + StaticConfig.UID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -396,6 +414,8 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
     /**
      * Truy cập bảng user lấy thoogn tin người dùng
      */
+    //3/12-9/12(tuần 16)
+    //Nguyễn Trần Tấn Phát
     private void getAllFriendInfo(final int index) {
         if (index == listFriendID.size()) {
             //save list friend
@@ -431,6 +451,9 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 }
 // Adapter cho listFreind
+//Nguyễn Dương Văn Khoa
+//26/11-2-12(tuần 15)
+//3/12-9/12(tuần 16)
 class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ListFriend listFriend;
@@ -734,6 +757,9 @@ class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 }
 
 // ViewHolder của friend
+//Nguyễn Thị Yến Nhi
+//26/11-2-12(tuần 15)
+//3/12-9/12(tuần 16)
 class ItemFriendViewHolder extends RecyclerView.ViewHolder{
     public CircleImageView avata;
     public TextView txtName, txtTime, txtMessage;

@@ -32,9 +32,12 @@ import vn.edu.hcmute.aloha.data.FriendDB;
 import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.Friend;
 import vn.edu.hcmute.aloha.model.ListFriend;
+//Nguyễn Thị Yến Nhi
+//Nguyễn Dương Văn Khoa
+//Nguyễn Trần Tấn Phát
+//26/11-2-12(tuần 15)
 
 // Khởi tạo dịch chat thừa kế từ lớp Service
-
 public class FriendChatService extends Service {
     private static String TAG = "FriendChatService";
     // Binder given to clients
@@ -52,6 +55,7 @@ public class FriendChatService extends Service {
 
 
     @Override
+
     public void onCreate() {
         super.onCreate();
         mapMark = new HashMap<>();
@@ -131,7 +135,7 @@ public class FriendChatService extends Service {
     public void stopNotify(String id) {
         mapMark.put(id, false);
     }
-
+    // tạo thông báo
     public void createNotify(String name, String content, int id, Bitmap icon, boolean isGroup) {
         Intent activityIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, activityIntent, PendingIntent.FLAG_ONE_SHOT);
