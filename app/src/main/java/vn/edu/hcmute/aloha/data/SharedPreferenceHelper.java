@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import vn.edu.hcmute.aloha.model.User;
-
+// dùng SharedPreference để lưu trữ dữ liệu
 
 public class SharedPreferenceHelper {
     private static SharedPreferenceHelper instance = null;
     private static SharedPreferences preferences;
     private static SharedPreferences.Editor editor;
+
     private static String SHARE_USER_INFO = "userinfo";
     private static String SHARE_KEY_NAME = "name";
     private static String SHARE_KEY_EMAIL = "email";
@@ -18,7 +19,7 @@ public class SharedPreferenceHelper {
 
 
     private SharedPreferenceHelper() {}
-
+// lấy đối tượng, thông tin của user
     public static SharedPreferenceHelper getInstance(Context context) {
         if (instance == null) {
             instance = new SharedPreferenceHelper();
@@ -27,7 +28,7 @@ public class SharedPreferenceHelper {
         }
         return instance;
     }
-
+//hàm lưu thông tin user
     public void saveUserInfo(User user) {
         editor.putString(SHARE_KEY_NAME, user.name);
         editor.putString(SHARE_KEY_EMAIL, user.email);
@@ -35,7 +36,7 @@ public class SharedPreferenceHelper {
         editor.putString(SHARE_KEY_UID, StaticConfig.UID);
         editor.apply();
     }
-
+// hàm lấy thông tin user
     public User getUserInfo(){
         String userName = preferences.getString(SHARE_KEY_NAME, "");
         String email = preferences.getString(SHARE_KEY_EMAIL, "");

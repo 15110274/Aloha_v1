@@ -10,12 +10,10 @@ import android.provider.BaseColumns;
 import vn.edu.hcmute.aloha.model.Friend;
 import vn.edu.hcmute.aloha.model.ListFriend;
 
-
+// lớp FriendDB
 public final class FriendDB {
     private static FriendDBHelper mDbHelper = null;
 
-    // To prevent someone from accidentally instantiating the contract class,
-    // make the constructor private.
     private FriendDB() {
     }
 
@@ -29,32 +27,31 @@ public final class FriendDB {
         return instance;
     }
 
-
+// hàm chèn thêm bạn
     public long addFriend(Friend friend) {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        // Create a new map of values, where column names are the keys
+
         ContentValues values = new ContentValues();
         values.put(FeedEntry.COLUMN_NAME_ID, friend.id);
         values.put(FeedEntry.COLUMN_NAME_NAME, friend.name);
         values.put(FeedEntry.COLUMN_NAME_EMAIL, friend.email);
         values.put(FeedEntry.COLUMN_NAME_ID_ROOM, friend.idRoom);
         values.put(FeedEntry.COLUMN_NAME_AVATA, friend.avata);
-        // Insert the new row, returning the primary key value of the new row
+
         return db.insert(FeedEntry.TABLE_NAME, null, values);
     }
 
-
+// hàm add danh sách bạn
     public void addListFriend(ListFriend listFriend){
-        for(Friend friend: listFriend.getListFriend()){
-            addFriend(friend);
+        for(Friend friend: listFriend.getListFriend()){// gọi lại hàm lấy danh sách bạn
+            addFriend(friend);// gọi lại hàm thêm bạn
         }
     }
-
+// hàm lấy danh sách bạn
     public ListFriend getListFriend() {
         ListFriend listFriend = new ListFriend();
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        // Define a projection that specifies which columns from the database
-// you will actually use after this query.
+
         try {
             Cursor cursor = db.rawQuery("select * from " + FeedEntry.TABLE_NAME, null);
             while (cursor.moveToNext()) {
@@ -70,7 +67,7 @@ public final class FriendDB {
         }catch (Exception e){
             return new ListFriend();
         }
-        return listFriend;
+        return listFriend;// trả về danh sách bạn
     }
 
     public void dropDB(){
@@ -79,7 +76,7 @@ public final class FriendDB {
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
-    /* Inner class that defines the table contents */
+// gán các base column cho chuỗi
     public static class FeedEntry implements BaseColumns {
         static final String TABLE_NAME = "friend";
         static final String COLUMN_NAME_ID = "friendID";
@@ -91,6 +88,7 @@ public final class FriendDB {
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
+    // chuỗi tạo bảng
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + FeedEntry.TABLE_NAME + " (" +
                     FeedEntry.COLUMN_NAME_ID + " TEXT PRIMARY KEY," +
@@ -98,27 +96,25 @@ public final class FriendDB {
                     FeedEntry.COLUMN_NAME_EMAIL + TEXT_TYPE + COMMA_SEP +
                     FeedEntry.COLUMN_NAME_ID_ROOM + TEXT_TYPE + COMMA_SEP +
                     FeedEntry.COLUMN_NAME_AVATA + TEXT_TYPE + " )";
-
+    // chuỗi xóa bảng
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FeedEntry.TABLE_NAME;
 
 
     private static class FriendDBHelper extends SQLiteOpenHelper {
-        // If you change the database schema, you must increment the database version.
         static final int DATABASE_VERSION = 1;
         static final String DATABASE_NAME = "FriendChat.db";
 
         FriendDBHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
-
+        // hàm tạo
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(SQL_CREATE_ENTRIES);
         }
-
+        // hàm upgrade
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            // This database is only a cache for online data, so its upgrade policy is
-            // to simply to discard the data and start over
+            // cơ sở dữ liệu chỉ là bộ đệm cho csdl trực tuyến, nên muốn upgarde thì xóa cái cũ và tạo cái mới
             db.execSQL(SQL_DELETE_ENTRIES);
             onCreate(db);
         }
