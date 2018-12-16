@@ -1,7 +1,8 @@
 package vn.edu.hcmute.aloha.model;
 
 import java.io.Serializable;
-
+//Nguyễn Trần Tấn Phát
+// Tạo đối tượng CallDetails để lưu chi tiết cuộc gọi
 public class CallDetails implements Serializable {
     private String name;
     private String phone;
@@ -9,6 +10,8 @@ public class CallDetails implements Serializable {
     private int type;
     private String dayTime;
 
+
+    // các constructor
     public CallDetails(String name, String phone, String duration, int type, String dayTime) {
         this.name = name;
         this.phone = phone;
@@ -17,9 +20,11 @@ public class CallDetails implements Serializable {
         this.dayTime = dayTime;
     }
 
+
     public CallDetails() {
     }
 
+    // các getter setter
     public String getName() {
         return name;
     }

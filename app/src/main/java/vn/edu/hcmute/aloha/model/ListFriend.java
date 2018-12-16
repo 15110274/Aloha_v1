@@ -1,7 +1,7 @@
 package vn.edu.hcmute.aloha.model;
 
 import java.util.ArrayList;
-
+// dánh sác bạn bè
 
 public class ListFriend {
     private ArrayList<Friend> listFriend;
@@ -14,6 +14,7 @@ public class ListFriend {
         listFriend = new ArrayList<>();
     }
 
+    //
     public String getAvataById(String id){
         for(Friend friend: listFriend){
             if(id.equals(friend.id)){

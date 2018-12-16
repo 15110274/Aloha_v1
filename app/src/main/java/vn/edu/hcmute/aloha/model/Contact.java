@@ -5,6 +5,8 @@ import android.widget.ImageView;
 
 import java.io.Serializable;
 
+
+// đối tượng các liên hệ trong danh bạ
 public class Contact implements Serializable {
 
     private Bitmap thumb;

@@ -32,7 +32,7 @@ public class ContactAdapter extends BaseAdapter {
 
 
 
-    public ContactAdapter(List<Contact> contacts, Context context) {
+        public ContactAdapter(List<Contact> contacts, Context context) {
         _contact = contacts;
         _contextContact = context;
         this.arraylistContact = new ArrayList<Contact>();
