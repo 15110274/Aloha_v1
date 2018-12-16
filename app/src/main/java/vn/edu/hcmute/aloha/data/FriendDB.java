@@ -9,7 +9,7 @@ import android.provider.BaseColumns;
 
 import vn.edu.hcmute.aloha.model.Friend;
 import vn.edu.hcmute.aloha.model.ListFriend;
-
+//Nguyễn Dương Văn Khoa 26/11-2-12(tuần 15)
 // lớp FriendDB
 public final class FriendDB {
     private static FriendDBHelper mDbHelper = null;

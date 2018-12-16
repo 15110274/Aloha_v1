@@ -32,10 +32,10 @@ import vn.edu.hcmute.aloha.data.FriendDB;
 import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.Friend;
 import vn.edu.hcmute.aloha.model.ListFriend;
-//
+
 // Khởi tạo dịch chat thừa kế từ lớp Service
+
 public class FriendChatService extends Service {
-    // Khởi tạo các biến cần thiết
     private static String TAG = "FriendChatService";
     // Binder given to clients
     public final IBinder mBinder = new LocalBinder();
@@ -51,8 +51,6 @@ public class FriendChatService extends Service {
     }
 
 
-
-    //Cập nhật các thông tin trạng thái bạn bè
     @Override
     public void onCreate() {
         super.onCreate();
@@ -74,7 +72,6 @@ public class FriendChatService extends Service {
             }
         };
         updateOnline.start();
-
 
         if (listFriend.getListFriend().size() > 0) {
             //Dang ky lang nghe cac room tai day
@@ -135,7 +132,6 @@ public class FriendChatService extends Service {
         mapMark.put(id, false);
     }
 
-    //Thông báo trên Thanh Notification khia có tin nhắn mới
     public void createNotify(String name, String content, int id, Bitmap icon, boolean isGroup) {
         Intent activityIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, activityIntent, PendingIntent.FLAG_ONE_SHOT);
@@ -174,7 +170,6 @@ public class FriendChatService extends Service {
         return mBinder;
     }
 
-    //Hủy dịch vụ xóa đi các thông tin
     @Override
     public void onDestroy() {
         super.onDestroy();

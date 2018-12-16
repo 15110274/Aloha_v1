@@ -17,6 +17,8 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.model.CallDetails;
+//Nguyễn Thị Yến Nhi 12/11-18/11(tuần 13)
+
 //adapter để đổ dữ liệu thông tin lịch sử cuộc gọi lên listView ở FragmentCall
 public class CallLogAdapter extends BaseAdapter {
     public List<CallDetails> _callDetails;

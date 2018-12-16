@@ -23,6 +23,7 @@ import java.util.List;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.adapter.ContactAdapter;
 import vn.edu.hcmute.aloha.model.Contact;
+//Nguyễn Trần Tấn Phát 19/11-25-11(tuần 14)
 // fragment cho danh bạ
 public class FragmentContacts extends Fragment {
 

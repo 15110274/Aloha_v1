@@ -1,6 +1,7 @@
 package vn.edu.hcmute.aloha.model;
 
 import java.util.ArrayList;
+//Nguyễn Dương Văn Khoa 19/11-25-11(tuần 14)
 // dánh sác bạn bè
 
 public class ListFriend {
