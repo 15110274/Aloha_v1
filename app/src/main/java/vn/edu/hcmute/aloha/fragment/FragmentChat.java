@@ -55,9 +55,10 @@ import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.Friend;
 import vn.edu.hcmute.aloha.model.ListFriend;
 import vn.edu.hcmute.aloha.service.ServiceUtils;
-
+// Fragment hiển thị thông tin chat
 public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
+    //Khai báo các biến cần thiết
     private RecyclerView recyclerListFrends;
     private ListFriendsAdapter adapter;
     public FragFriendClickFloatButton onClickFloatButton;
@@ -81,6 +82,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
         super.onCreate(savedInstanceState);
     }
 
+    //Tải lại sau thời gian mặt đặt để làm mới Fragment, update các thông tin
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,6 +98,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
 
             }
         };
+        //Lấy danh sách bạn bè lưu offline
         if (dataListFriend == null) {
             dataListFriend = FriendDB.getInstance(getContext()).getListFriend();
             if (dataListFriend.getListFriend().size() > 0) {
@@ -106,6 +109,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
                 detectFriendOnline.start();
             }
         }
+        // Khai báo các đối tượng trên giao diện
         View layout = inflater.inflate(R.layout.fragment_chat, container, false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerListFrends = (RecyclerView) layout.findViewById(R.id.recycleListFriend);
@@ -125,6 +129,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
             getListFriendUId();
         }
 
+        //Xóa friend trên giao diện
         deleteFriendReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -140,6 +145,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
             }
         };
 
+        // Hộp thoại xóa friend
         IntentFilter intentFilter = new IntentFilter(ACTION_DELETE_FRIEND);
         getContext().registerReceiver(deleteFriendReceiver, intentFilter);
 
@@ -161,6 +167,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
         }
     }
 
+    //Load lại các thành phần
     @Override
     public void onRefresh() {
         listFriendID.clear();
@@ -171,6 +178,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
         getListFriendUId();
     }
 
+    //Xử lý sự kiện bấm vào nút thêm bạn
     public class FragFriendClickFloatButton implements View.OnClickListener {
         Context context;
         LovelyProgressDialog dialogWait;
@@ -214,7 +222,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
         }
 
         /**
-         * TIm id cua email tren server
+         * Tìm ID của mail server
          *
          * @param email
          */
@@ -229,7 +237,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     dialogWait.dismiss();
                     if (dataSnapshot.getValue() == null) {
-                        //email not found
+                        //Không tìm thấy email
                         new LovelyInfoDialog(context)
                                 .setTopColorRes(R.color.colorAccent)
                                 .setIcon(R.drawable.ic_add_friend)
@@ -266,7 +274,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
         }
 
         /**
-         * Lay danh sach friend cua một UID
+         * Lấy danh sách bạn bè qua UID
          */
         private void checkBeforAddFriend(final String idFriend, Friend userInfo) {
             dialogWait.setCancelable(false)
@@ -298,6 +306,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
          *
          * @param idFriend
          */
+        //Thêm bạn mới qua email
         private void addFriend(final String idFriend, boolean isIdFriend) {
             if (idFriend != null) {
                 if (isIdFriend) {
@@ -385,7 +394,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     /**
-     * Truy cap bang user lay thong tin id nguoi dung
+     * Truy cập bảng user lấy thoogn tin người dùng
      */
     private void getAllFriendInfo(final int index) {
         if (index == listFriendID.size()) {
@@ -421,7 +430,7 @@ public class FragmentChat extends Fragment implements SwipeRefreshLayout.OnRefre
         }
     }
 }
-
+// Adapter cho listFreind
 class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ListFriend listFriend;
@@ -446,6 +455,7 @@ class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         dialogWaitDeleting = new LovelyProgressDialog(context);
     }
 
+    //custem layout hiển thị các friend
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.rc_item_friend, parent, false);
@@ -519,6 +529,7 @@ class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 });
 
 
+        //Lấy và hiển thị các thông tin bạn bè
         if (listFriend.getListFriend().get(position).message.text.length() > 0) {
             ((ItemFriendViewHolder) holder).txtMessage.setVisibility(View.VISIBLE);
             ((ItemFriendViewHolder) holder).txtTime.setVisibility(View.VISIBLE);
@@ -645,13 +656,14 @@ class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    //Đếm bạn
     @Override
     public int getItemCount() {
         return listFriend.getListFriend() != null ? listFriend.getListFriend().size() : 0;
     }
 
     /**
-     * Delete friend
+     * Xóa bạn trên Firebase
      *
      * @param idFriend
      */
@@ -710,6 +722,7 @@ class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             });
         } else {
+            //Tắt dialog
             dialogWaitDeleting.dismiss();
             new LovelyInfoDialog(context)
                     .setTopColorRes(R.color.colorPrimary)
@@ -720,6 +733,7 @@ class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 }
 
+// ViewHolder của friend
 class ItemFriendViewHolder extends RecyclerView.ViewHolder{
     public CircleImageView avata;
     public TextView txtName, txtTime, txtMessage;
