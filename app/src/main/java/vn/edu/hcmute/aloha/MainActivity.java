@@ -27,6 +27,13 @@ import vn.edu.hcmute.aloha.fragment.FragmentCall;
 import vn.edu.hcmute.aloha.fragment.FragmentChat;
 import vn.edu.hcmute.aloha.fragment.FragmentContacts;
 import vn.edu.hcmute.aloha.service.ServiceUtils;
+
+
+//Nguyễn Dương Văn Khoa	15110235
+//Nguyễn Trần Tấn Phát	15110274
+//Nguyễn Thị Yến Nhi    15110269
+
+
 //Lớp xử lý chính, chứa các fragment
 //Nguyễn Thị Yến Nhi
 //Nguyễn Dương Văn Khoa
