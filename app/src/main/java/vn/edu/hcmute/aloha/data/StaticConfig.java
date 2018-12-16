@@ -1,7 +1,7 @@
 package vn.edu.hcmute.aloha.data;
+//Nguyễn Dương Văn Khoa 26/11-2-12(tuần 15)
 
-
-
+// khởi tạo và gán các biến static cần thiết
 public class StaticConfig {
     public static int REQUEST_CODE_REGISTER = 2000;
     public static String STR_EXTRA_ACTION_LOGIN = "login";

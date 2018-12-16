@@ -26,7 +26,7 @@ import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.adapter.CallLogAdapter;
 import vn.edu.hcmute.aloha.model.CallDetails;
 // Fragment hiển thị lịch sử cuộc gọi
-
+//Nguyễn Thị Yến Nhi 19/11-25-11(tuần 14)
 public class FragmentCall extends Fragment {
 
     // ArrayList lưu danh sách chi tiết cuộc gọi

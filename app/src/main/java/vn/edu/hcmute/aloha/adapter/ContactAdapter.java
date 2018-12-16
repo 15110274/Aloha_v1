@@ -22,6 +22,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.hcmute.aloha.R;
 import vn.edu.hcmute.aloha.model.Contact;
+//Nguyễn Trần Tấn Phát 19/11-25-11(tuần 14)
 //adapter để đổ dữ liệu danh bạ lên listView ở FragmentContacts
 public class ContactAdapter extends BaseAdapter {
     public List<Contact> _contact;

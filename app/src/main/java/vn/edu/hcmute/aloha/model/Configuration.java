@@ -1,6 +1,6 @@
 package vn.edu.hcmute.aloha.model;
 
-
+//Nguyễn Thị Yến Nhi 19/11-25-11(tuần 14)
 // tạo đối tượng Configuration là
 public class Configuration {
     private String label;

@@ -1,8 +1,9 @@
 package vn.edu.hcmute.aloha.model;
 
 import java.io.Serializable;
-//Nguyễn Thị Yến Nhi
+//Nguyễn Thị Yến Nhi 12/11-18/11(tuần 13)
 // Tạo đối tượng CallDetails để lưu chi tiết cuộc gọi
+
 public class CallDetails implements Serializable {
     private String name;
     private String phone;

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import vn.edu.hcmute.aloha.model.User;
+//Nguyễn Dương Văn Khoa 26/11-2-12(tuần 15)
 // dùng SharedPreference để lưu trữ dữ liệu
 
 public class SharedPreferenceHelper {

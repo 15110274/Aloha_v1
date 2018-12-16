@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import java.io.Serializable;
-
+//Nguyễn Thị Yến Nhi: 12/11-18/11(tuần 13)
 
 // đối tượng các liên hệ trong danh bạ
 public class Contact implements Serializable {

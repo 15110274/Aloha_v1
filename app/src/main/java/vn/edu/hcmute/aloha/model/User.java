@@ -1,6 +1,6 @@
 package vn.edu.hcmute.aloha.model;
 
-
+//Nguyễn Dương Văn Khoa 19/11-25-11(tuần 14)
 // đối trượng người Dùng
 public class User {
     public String name;

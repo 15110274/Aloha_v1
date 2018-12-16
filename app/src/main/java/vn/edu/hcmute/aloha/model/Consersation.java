@@ -1,7 +1,7 @@
 package vn.edu.hcmute.aloha.model;
 
 import java.util.ArrayList;
-
+// Nguyễn Trần Tấn Phát 19/11-25-11(tuần 14)
 // danh sách các tin nhắn
 
 public class Consersation {
