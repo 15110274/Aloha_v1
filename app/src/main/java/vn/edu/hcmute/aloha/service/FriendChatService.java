@@ -32,7 +32,7 @@ import vn.edu.hcmute.aloha.data.FriendDB;
 import vn.edu.hcmute.aloha.data.StaticConfig;
 import vn.edu.hcmute.aloha.model.Friend;
 import vn.edu.hcmute.aloha.model.ListFriend;
-
+//
 // Khởi tạo dịch chat thừa kế từ lớp Service
 public class FriendChatService extends Service {
     // Khởi tạo các biến cần thiết
